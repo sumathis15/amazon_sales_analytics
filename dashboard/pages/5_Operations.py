@@ -27,7 +27,8 @@ if tx.empty:
 
 sla = {"Same Day": 1, "Express": 2, "Standard": 5}
 tx = tx.copy()
-tx["on_time"] = tx["delivery_days"] <= tx["delivery_type"].map(sla)
+sla_days = tx["delivery_type"].astype(str).map(sla).astype("float64")
+tx["on_time"] = tx["delivery_days"].astype("float64") <= sla_days
 
 st.header("Q21 · Delivery performance")
 c1, c2, c3 = st.columns(3)
