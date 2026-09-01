@@ -87,13 +87,13 @@ for part in parts[1:]:
     if len(files) == 1:
         path = FIGURES_DIR / files[0]
         if path.exists():
-            st.image(str(path), use_container_width=True)
+            st.image(str(path), width="stretch")
     elif files:
         cols = st.columns(len(files))
         for col, name in zip(cols, files):
             path = FIGURES_DIR / name
             if path.exists():
-                col.image(str(path), use_container_width=True)
+                col.image(str(path), width="stretch")
     st.markdown(body)
     st.divider()
 

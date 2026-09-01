@@ -40,12 +40,13 @@ The optional SQLite warehouse (`data/amazon_india_analytics.db`) is rebuilt by t
 ## Streamlit Cloud
 
 1. Open [share.streamlit.io](https://share.streamlit.io) and sign in with GitHub.
-2. **Create app** → this repository.
-3. **Main file path:** `dashboard/Home.py`
-4. Python version: **3.12** (see `runtime.txt`).
-5. Deploy. First load caches the parquet warehouse and takes longer than later reruns.
+2. **Create app** → repository `sumathis15/amazon_sales_analytics`.
+3. **Main file path (exact, lowercase):** `dashboard/Home.py`  
+   Linux hosting is case-sensitive. `Dashboard/Home.py` will fail.
+4. Python version: **3.12**.
+5. Deploy, then **Reboot** the app after the first failed build if you change `requirements.txt`.
 
-No secrets are required. Sidebar filters apply on every analytics page.
+First load reads ~1.1M rows from parquet and can take a minute. No secrets are required.
 
 ## Pipeline notes
 

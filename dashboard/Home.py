@@ -55,11 +55,11 @@ with left:
     fig = px.line(yearly, x="order_year", y="revenue", markers=True, title="Revenue trajectory in the current filter")
     fig.update_traces(line_color=AMAZON_ORANGE)
     fig.update_layout(yaxis_title="INR", xaxis_title="Year")
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 with right:
     cats = tx.groupby("subcategory", as_index=False)["final_amount_inr"].sum().sort_values("final_amount_inr", ascending=False)
     fig = px.pie(cats, names="subcategory", values="final_amount_inr", title="Revenue mix", hole=0.45)
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
 st.subheader("How to use this workspace")
 st.markdown(

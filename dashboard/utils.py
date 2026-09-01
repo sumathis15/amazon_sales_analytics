@@ -19,30 +19,31 @@ DEVELOPER_NAME = "Sumathi S"
 
 
 def render_developer_credit() -> None:
-    """Pinned 'Developed by' block at the bottom of the sidebar."""
+    """Credit box pinned to the top-left corner of the sidebar pane."""
     st.markdown(
-        """
+        f"""
 <style>
-section[data-testid="stSidebar"] {
-    position: relative;
-}
-.developer-credit {
-    position: sticky;
-    bottom: 0;
-    margin-top: 1.75rem;
+/* Sit in the top-left of the left pane, above page links and filters. */
+.developer-credit {{
+    position: fixed;
+    top: 0.7rem;
+    left: 0.7rem;
+    width: 16.6rem;
+    z-index: 1000002;
+    margin: 0;
     background: #15202b;
     border-radius: 12px;
-    padding: 14px 16px 12px 16px;
+    padding: 12px 14px 10px 14px;
     box-shadow: 0 0 0 1px rgba(255,255,255,0.06);
-}
-.developer-credit .credit-label {
+}}
+.developer-credit .credit-label {{
     font-size: 11px;
     letter-spacing: 0.14em;
     color: #9bb0c9;
     font-weight: 650;
-    margin-bottom: 10px;
-}
-.developer-credit a {
+    margin-bottom: 8px;
+}}
+.developer-credit a {{
     display: flex;
     align-items: center;
     gap: 10px;
@@ -50,9 +51,9 @@ section[data-testid="stSidebar"] {
     text-decoration: none !important;
     font-weight: 600;
     font-size: 0.98rem;
-}
-.developer-credit a:hover { opacity: 0.88; }
-.developer-credit .li-badge {
+}}
+.developer-credit a:hover {{ opacity: 0.88; }}
+.developer-credit .li-badge {{
     width: 22px;
     height: 22px;
     border-radius: 4px;
@@ -65,13 +66,14 @@ section[data-testid="stSidebar"] {
     font-weight: 800;
     letter-spacing: -0.04em;
     color: #fff;
-}
+}}
+[data-testid="stSidebarNav"] {{
+    padding-top: 5.6rem !important;
+}}
+section[data-testid="stSidebar"] > div:first-child {{
+    padding-top: 0.25rem;
+}}
 </style>
-        """,
-        unsafe_allow_html=True,
-    )
-    st.sidebar.markdown(
-        f"""
 <div class="developer-credit">
   <div class="credit-label">DEVELOPED BY</div>
   <a href="{LINKEDIN_URL}" target="_blank" rel="noopener noreferrer">
@@ -84,25 +86,62 @@ section[data-testid="stSidebar"] {
     )
 
 
-@st.cache_data(show_spinner="Loading cleaned transactions...")
-def load_transactions() -> pd.DataFrame:
-    path = CLEANED_DIR / "transactions_cleaned.parquet"
-    df = pd.read_parquet(path)
-    df["order_date"] = pd.to_datetime(df["order_date"])
+_CATEGORY_COLS = (
+    "category",
+    "subcategory",
+    "brand",
+    "customer_city",
+    "customer_state",
+    "customer_tier",
+    "customer_spending_tier",
+    "customer_age_group",
+    "payment_method",
+    "payment_method_group",
+    "delivery_type",
+    "return_status",
+    "festival_name",
+    "product_name",
+)
+
+
+def _optimise_frame(df: pd.DataFrame) -> pd.DataFrame:
+    """Shrink dtypes so the warehouse fits Streamlit Cloud RAM."""
+    if "order_date" in df.columns:
+        df["order_date"] = pd.to_datetime(df["order_date"])
+    for col in _CATEGORY_COLS:
+        if col in df.columns:
+            df[col] = df[col].astype("category")
+    for col in df.select_dtypes(include=["float64"]).columns:
+        df[col] = pd.to_numeric(df[col], downcast="float")
+    for col in df.select_dtypes(include=["int64"]).columns:
+        df[col] = pd.to_numeric(df[col], downcast="integer")
     return df
 
 
-@st.cache_data(show_spinner="Loading customer dimension...")
+@st.cache_resource(show_spinner="Loading cleaned transactions...")
+def load_transactions() -> pd.DataFrame:
+    path = CLEANED_DIR / "transactions_cleaned.parquet"
+    if not path.exists():
+        st.error(
+            "Cleaned warehouse is missing (`data/cleaned/transactions_cleaned.parquet`). "
+            "On Streamlit Cloud this file must be in the GitHub repo."
+        )
+        st.stop()
+    return _optimise_frame(pd.read_parquet(path))
+
+
+@st.cache_resource(show_spinner="Loading customer dimension...")
 def load_customers() -> pd.DataFrame:
-    return pd.read_parquet(CLEANED_DIR / "customers.parquet")
+    return _optimise_frame(pd.read_parquet(CLEANED_DIR / "customers.parquet"))
 
 
-@st.cache_data(show_spinner="Loading product dimension...")
+@st.cache_resource(show_spinner="Loading product dimension...")
 def load_products() -> pd.DataFrame:
-    return pd.read_parquet(CLEANED_DIR / "products.parquet")
+    return _optimise_frame(pd.read_parquet(CLEANED_DIR / "products.parquet"))
 
 
 def apply_filters(df: pd.DataFrame) -> pd.DataFrame:
+    render_developer_credit()
     years = sorted(df["order_year"].unique())
     subcats = sorted(df["subcategory"].unique())
     states = sorted(df["customer_state"].unique())
@@ -130,8 +169,7 @@ def apply_filters(df: pd.DataFrame) -> pd.DataFrame:
     elif festival == "Non-festival":
         out = out[~out["is_festival_sale"]]
     st.sidebar.caption(f"{len(out):,} of {len(df):,} orders in view")
-    render_developer_credit()
-    return out
+    return out.copy()
 
 
 def kpi_row(items: list[tuple[str, str, str | None]]) -> None:
