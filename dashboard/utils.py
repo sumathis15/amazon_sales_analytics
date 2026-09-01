@@ -3,38 +3,76 @@
 from __future__ import annotations
 
 import sys
+import warnings
 from pathlib import Path
 
 import pandas as pd
 import streamlit as st
 
+warnings.filterwarnings("ignore", message=".*keyword arguments have been deprecated.*")
+
 ROOT = Path(__file__).resolve().parent.parent
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from src.config import CITY_COORDS, CLEANED_DIR, DB_PATH, PALETTE
+from src.config import CLEANED_DIR
 
 LINKEDIN_URL = "https://www.linkedin.com/in/sumathisaravanan/"
 DEVELOPER_NAME = "Sumathi S"
 
-
-def render_developer_credit() -> None:
-    """Compact credit line in the sidebar, under the page list and above filters."""
+def inject_theme() -> None:
+    """Apply chrome immediately so the Streamlit header cannot cover titles."""
     st.markdown(
         """
 <style>
+/* Amazon analytics workspace — navy / orange / warm parchment */
+.stApp {
+    background:
+        radial-gradient(1200px 420px at 12% -8%, rgba(255, 153, 0, 0.22), transparent 55%),
+        radial-gradient(900px 380px at 100% 0%, rgba(20, 110, 180, 0.12), transparent 50%),
+        linear-gradient(180deg, #FFF6E7 0%, #F6F1E8 42%, #EEF2F6 100%);
+    font-family: "Amazon Ember", "Helvetica Neue", Arial, sans-serif;
+}
+[data-testid="stHeader"],
+header[data-testid="stHeader"],
+div[data-testid="stDecoration"] {
+    display: none !important;
+    height: 0 !important;
+}
+#MainMenu, footer { visibility: hidden; }
+section[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, #131A22 0%, #232F3E 55%, #1B2430 100%) !important;
+    border-right: 3px solid #FF9900;
+}
 [data-testid="stSidebarNavSeparator"] { display: none; }
 [data-testid="stSidebarNav"] { padding-bottom: 0.15rem !important; }
+[data-testid="stSidebarNav"] a span { color: #EAEDED !important; }
+[data-testid="stSidebarNav"] a:hover { background: rgba(255, 153, 0, 0.16); }
+[data-testid="stSidebarNav"] a[aria-current="page"] {
+    background: rgba(255, 153, 0, 0.22);
+    border-left: 3px solid #FF9900;
+}
+[data-testid="stSidebarNav"] a[href]:not([href=""]):has(span) {
+    border-radius: 8px;
+}
+[data-testid="stSidebar"] h1,
+[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3,
+[data-testid="stSidebar"] [data-testid="stWidgetLabel"] p,
+[data-testid="stSidebar"] [data-testid="stCaptionContainer"] p,
+[data-testid="stSidebar"] label {
+    color: #FEBD69 !important;
+}
 .developer-credit {
     margin: 0;
     padding: 0.15rem 0 0.7rem 0;
-    border-bottom: 1px solid rgba(49, 51, 63, 0.12);
+    border-bottom: 1px solid rgba(254, 189, 105, 0.28);
     background: transparent;
 }
 .developer-credit .credit-label {
     font-size: 10px;
     letter-spacing: 0.12em;
-    color: #6b7280;
+    color: #FEBD69;
     font-weight: 650;
     margin-bottom: 6px;
 }
@@ -42,12 +80,12 @@ def render_developer_credit() -> None:
     display: flex;
     align-items: center;
     gap: 8px;
-    color: #232F3E !important;
+    color: #FFFFFF !important;
     text-decoration: none !important;
     font-weight: 600;
     font-size: 0.92rem;
 }
-.developer-credit a:hover { color: #0A66C2 !important; }
+.developer-credit a:hover { color: #FEBD69 !important; }
 .developer-credit .li-badge {
     width: 18px;
     height: 18px;
@@ -65,10 +103,58 @@ div[data-testid="stSidebarContent"] div[data-testid="stMarkdownContainer"]:has(.
     padding-top: 0 !important;
     margin-bottom: 0.2rem !important;
 }
+.block-container { padding-top: 1.1rem !important; }
+h1 {
+    color: #232F3E !important;
+    letter-spacing: -0.02em;
+}
+h1::after {
+    content: "";
+    display: block;
+    width: 5.5rem;
+    height: 4px;
+    margin-top: 0.45rem;
+    background: linear-gradient(90deg, #FF9900, #FEBD69);
+    border-radius: 4px;
+}
+h2, h3 { color: #232F3E !important; }
+[data-testid="stCaptionContainer"] p { color: #5A6570 !important; }
+[data-testid="stMetric"] {
+    background: #FFFFFF;
+    border: 1px solid rgba(35, 47, 62, 0.08);
+    border-left: 4px solid #FF9900;
+    border-radius: 12px;
+    padding: 0.55rem 0.75rem 0.45rem 0.8rem;
+    box-shadow: 0 6px 18px rgba(35, 47, 62, 0.06);
+}
+[data-testid="stMetricLabel"] { color: #5A6570 !important; }
+[data-testid="stMetricValue"] { color: #232F3E !important; }
+[data-testid="stPlotlyChart"] {
+    background: rgba(255, 255, 255, 0.78);
+    border: 1px solid rgba(35, 47, 62, 0.07);
+    border-radius: 14px;
+    padding: 0.2rem 0.2rem 0;
+}
+[data-testid="stImage"] img {
+    max-height: 420px !important;
+    width: auto !important;
+    max-width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+}
+[data-testid="stAlert"] {
+    border-left: 4px solid #FF9900;
+    background: rgba(255, 255, 255, 0.88);
+}
 </style>
         """,
         unsafe_allow_html=True,
     )
+
+
+def render_developer_credit() -> None:
+    """Theme + compact credit line in the sidebar, under the page list and above filters."""
+    inject_theme()
     st.sidebar.markdown(
         f"""
 <div class="developer-credit">
@@ -173,6 +259,18 @@ def kpi_row(items: list[tuple[str, str, str | None]]) -> None:
     cols = st.columns(len(items))
     for col, (label, value, delta) in zip(cols, items):
         col.metric(label, value, delta=delta)
+
+
+def show_chart(fig, height: int = 400) -> None:
+    """Plotly charts at one dashboard height so none blow up the page."""
+    if hasattr(fig, "update_layout"):
+        fig.update_layout(height=height, autosize=True)
+    st.plotly_chart(fig, width="stretch")
+
+
+def show_figure(path: Path | str) -> None:
+    """EDA PNGs share the same width stretch; CSS caps height to 420px."""
+    st.image(str(path), width="stretch")
 
 
 def inr(value: float, digits: int = 1) -> str:

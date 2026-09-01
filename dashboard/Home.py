@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parent.parent
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from dashboard.utils import apply_filters, inr, kpi_row, load_customers, load_transactions, yoy_delta
+from dashboard.utils import inject_theme, show_chart, apply_filters, inr, kpi_row, load_customers, load_transactions, yoy_delta
 from src.config import AMAZON_NAVY, AMAZON_ORANGE
 
 st.set_page_config(
@@ -22,6 +22,7 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
 )
+inject_theme()
 
 st.title("Amazon India: A Decade of Sales Analytics")
 st.caption("Cleaned transactional warehouse · 2015–2025 · Streamlit BI layer over SQLite-ready parquet")
@@ -55,11 +56,11 @@ with left:
     fig = px.line(yearly, x="order_year", y="revenue", markers=True, title="Revenue trajectory in the current filter")
     fig.update_traces(line_color=AMAZON_ORANGE)
     fig.update_layout(yaxis_title="INR", xaxis_title="Year")
-    st.plotly_chart(fig, width="stretch")
+    show_chart(fig)
 with right:
     cats = tx.groupby("subcategory", as_index=False)["final_amount_inr"].sum().sort_values("final_amount_inr", ascending=False)
     fig = px.pie(cats, names="subcategory", values="final_amount_inr", title="Revenue mix", hole=0.45)
-    st.plotly_chart(fig, width="stretch")
+    show_chart(fig)
 
 st.subheader("How to use this workspace")
 st.markdown(

@@ -16,10 +16,11 @@ ROOT = Path(__file__).resolve().parent.parent.parent
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from dashboard.utils import apply_filters, inr, kpi_row, load_customers, load_products, load_transactions, yoy_delta
+from dashboard.utils import inject_theme, show_chart, apply_filters, inr, kpi_row, load_customers, load_products, load_transactions, yoy_delta
 from src.config import AMAZON_NAVY, AMAZON_ORANGE, PALETTE
 
 st.set_page_config(page_title="Executive Dashboard", layout="wide")
+inject_theme()
 st.title("Executive Dashboard")
 st.caption("Questions 1–5 · C-level KPIs, performance vs target, strategy, finance, growth")
 
@@ -54,11 +55,11 @@ y = by_year.reset_index()
 y["yoy"] = y["revenue"].pct_change()
 with c1:
     fig = px.bar(y, x="order_year", y="revenue", title="Revenue vs prior years", color_discrete_sequence=[AMAZON_ORANGE])
-    st.plotly_chart(fig, width="stretch")
+    show_chart(fig)
 with c2:
     top = tx.groupby("subcategory", as_index=False)["final_amount_inr"].sum().sort_values("final_amount_inr", ascending=False)
     fig = px.bar(top, x="subcategory", y="final_amount_inr", title="Top performing subcategories", color_discrete_sequence=[AMAZON_NAVY])
-    st.plotly_chart(fig, width="stretch")
+    show_chart(fig)
 
 # --- Q2 Real-time monitor ---
 st.header("Q2 · Business performance monitor")
@@ -90,15 +91,15 @@ g1, g2, g3 = st.columns(3)
 with g1:
     tier = tx.groupby("customer_tier", as_index=False)["final_amount_inr"].sum()
     fig = px.pie(tier, names="customer_tier", values="final_amount_inr", title="Revenue by city tier", hole=0.4)
-    st.plotly_chart(fig, width="stretch")
+    show_chart(fig)
 with g2:
     brand_share = tx.groupby("brand")["final_amount_inr"].sum().nlargest(6).reset_index()
     fig = px.bar(brand_share, x="brand", y="final_amount_inr", title="Competitive brand share (top 6)", color_discrete_sequence=[AMAZON_ORANGE])
-    st.plotly_chart(fig, width="stretch")
+    show_chart(fig)
 with g3:
     geo = tx.groupby("customer_state", as_index=False)["final_amount_inr"].sum().nlargest(10, "final_amount_inr")
     fig = px.bar(geo, x="customer_state", y="final_amount_inr", title="Geographic concentration", color_discrete_sequence=[AMAZON_NAVY])
-    st.plotly_chart(fig, width="stretch")
+    show_chart(fig)
 st.caption("Market share here is internal brand/category mix — the files contain no competitor GMV.")
 
 # --- Q4 Financial performance ---
@@ -111,10 +112,10 @@ fin["margin_pct"] = fin["gross_profit"] / fin["revenue"] * 100
 c1, c2 = st.columns(2)
 with c1:
     fig = px.bar(fin.reset_index(), x="subcategory", y="revenue", title="Revenue by subcategory", color_discrete_sequence=[AMAZON_ORANGE])
-    st.plotly_chart(fig, width="stretch")
+    show_chart(fig)
 with c2:
     fig = px.bar(fin.reset_index(), x="subcategory", y="margin_pct", title="Estimated gross margin % (COGS proxy 72% of discounted price)", color_discrete_sequence=[AMAZON_NAVY])
-    st.plotly_chart(fig, width="stretch")
+    show_chart(fig)
 monthly = tx.groupby(tx["order_date"].dt.to_period("M"))["final_amount_inr"].sum()
 monthly.index = monthly.index.to_timestamp()
 X = np.arange(len(monthly)).reshape(-1, 1)
@@ -126,7 +127,7 @@ fig.add_trace(go.Scatter(x=monthly.index, y=monthly.values, name="Actual", line=
 future_idx = pd.date_range(monthly.index.min(), periods=len(pred), freq="MS")
 fig.add_trace(go.Scatter(x=future_idx, y=pred, name="Linear forecast", line=dict(color=AMAZON_NAVY, dash="dash")))
 fig.update_layout(title="Revenue forecast (linear baseline, next 6 months)")
-st.plotly_chart(fig, width="stretch")
+show_chart(fig)
 st.caption("The files have no cost ledger. Margin uses a documented 72% COGS proxy so the chart is directional, not statutory P&L.")
 
 # --- Q5 Growth analytics ---
@@ -138,9 +139,9 @@ growth["portfolio_skus"] = tx.groupby("order_year")["product_id"].nunique()
 g1, g2 = st.columns(2)
 with g1:
     fig = px.line(growth.reset_index(), x="index", y=["new_customers", "active_customers"], title="Customer growth vs active base", markers=True)
-    st.plotly_chart(fig, width="stretch")
+    show_chart(fig)
 with g2:
     fig = px.bar(growth.reset_index(), x="index", y="portfolio_skus", title="Active product portfolio by year", color_discrete_sequence=[AMAZON_ORANGE])
-    st.plotly_chart(fig, width="stretch")
+    show_chart(fig)
 metro_share = tx.groupby("order_year")["customer_tier"].apply(lambda s: (s == "Metro").mean())
 st.line_chart(metro_share.rename("Metro order share"))

@@ -13,7 +13,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from src.config import FIGURES_DIR, REPORTS_DIR
-from dashboard.utils import render_developer_credit
+from dashboard.utils import render_developer_credit, show_figure
 
 st.set_page_config(page_title="EDA", layout="wide")
 render_developer_credit()
@@ -87,13 +87,14 @@ for part in parts[1:]:
     if len(files) == 1:
         path = FIGURES_DIR / files[0]
         if path.exists():
-            st.image(str(path), width="stretch")
+            show_figure(path)
     elif files:
         cols = st.columns(len(files))
         for col, name in zip(cols, files):
             path = FIGURES_DIR / name
             if path.exists():
-                col.image(str(path), width="stretch")
+                with col:
+                    show_figure(path)
     st.markdown(body)
     st.divider()
 

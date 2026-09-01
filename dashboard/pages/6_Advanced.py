@@ -17,10 +17,11 @@ ROOT = Path(__file__).resolve().parent.parent.parent
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from dashboard.utils import apply_filters, inr, kpi_row, load_customers, load_transactions, yoy_delta
+from dashboard.utils import inject_theme, show_chart, apply_filters, inr, kpi_row, load_customers, load_transactions, yoy_delta
 from src.config import AMAZON_NAVY, AMAZON_ORANGE, PALETTE
 
 st.set_page_config(page_title="Advanced Analytics", layout="wide")
+inject_theme()
 st.title("Advanced Analytics")
 st.caption("Questions 26–30 · forecast, market intel, cross-sell, seasonal planning, command center")
 
@@ -42,7 +43,7 @@ fig = go.Figure()
 fig.add_trace(go.Scatter(x=monthly.index, y=monthly.values, name="Actual", line=dict(color=AMAZON_ORANGE)))
 fig.add_trace(go.Scatter(x=idx, y=pred, name="Linear forecast", line=dict(color=AMAZON_NAVY, dash="dash")))
 fig.update_layout(title="Monthly revenue forecast")
-st.plotly_chart(fig, width="stretch")
+show_chart(fig)
 
 cust = customers[customers["customer_id"].isin(tx["customer_id"].unique())].copy()
 snapshot = tx["order_date"].max()
@@ -54,7 +55,7 @@ if cust["churned"].nunique() == 2 and len(cust) > 200:
     clf = LogisticRegression(max_iter=400).fit(Xs, cust["churned"])
     cust["churn_prob"] = clf.predict_proba(Xs)[:, 1]
     st.caption(f"Logistic churn model (inactive 365+ days). In-sample accuracy {clf.score(Xs, cust['churned']):.3f}.")
-    st.plotly_chart(px.histogram(cust, x="churn_prob", color="rfm_segment", title="Predicted churn probability"), width="stretch")
+    show_chart(px.histogram(cust, x="churn_prob", color="rfm_segment", title="Predicted churn probability"))
 else:
     st.info("Not enough class variation in this filter to fit a churn model.")
 
@@ -62,9 +63,9 @@ st.header("Q27 · Market intelligence")
 st.caption("No external competitor feed. Internal brand share, price bands and subcategory mix are the available positioning signals.")
 brand = tx.groupby(["order_year", "brand"], as_index=False)["final_amount_inr"].sum()
 top = tx.groupby("brand")["final_amount_inr"].sum().nlargest(6).index
-st.plotly_chart(px.line(brand[brand["brand"].isin(top)], x="order_year", y="final_amount_inr", color="brand", title="Brand competitive set"), width="stretch")
+show_chart(px.line(brand[brand["brand"].isin(top)], x="order_year", y="final_amount_inr", color="brand", title="Brand competitive set"))
 price = tx.groupby(["subcategory", "brand"], as_index=False)["discounted_price_inr"].median()
-st.plotly_chart(px.box(tx[tx["brand"].isin(top)], x="brand", y="discounted_price_inr", color="subcategory", title="Price architecture by brand"), width="stretch")
+show_chart(px.box(tx[tx["brand"].isin(top)], x="brand", y="discounted_price_inr", color="subcategory", title="Price architecture by brand"))
 
 st.header("Q28 · Cross-sell & upsell")
 pairs = (
@@ -86,14 +87,14 @@ for a in subs:
         conf = both / buyers_a.sum() if buyers_a.sum() else 0
         records.append({"from": a, "to": b, "support": support, "confidence": conf})
 assoc = pd.DataFrame(records).sort_values("confidence", ascending=False)
-st.plotly_chart(px.density_heatmap(assoc, x="to", y="from", z="confidence", title="P(buy to | bought from)"), width="stretch")
+show_chart(px.density_heatmap(assoc, x="to", y="from", z="confidence", title="P(buy to | bought from)"))
 st.dataframe(assoc.head(12), width="stretch")
 
 st.header("Q29 · Seasonal planning")
 month_cat = tx.groupby(["order_month", "subcategory"], as_index=False)["quantity"].sum()
-st.plotly_chart(px.density_heatmap(month_cat, x="order_month", y="subcategory", z="quantity", title="Unit demand calendar"), width="stretch")
+show_chart(px.density_heatmap(month_cat, x="order_month", y="subcategory", z="quantity", title="Unit demand calendar"))
 fest = tx.groupby(["order_month", "festival_name"], as_index=False)["final_amount_inr"].sum().dropna()
-st.plotly_chart(px.bar(fest, x="order_month", y="final_amount_inr", color="festival_name", title="Promotional calendar · festival GMV by month"), width="stretch")
+show_chart(px.bar(fest, x="order_month", y="final_amount_inr", color="festival_name", title="Promotional calendar · festival GMV by month"))
 st.markdown(
     """
 Planning notes from the demand calendar:
@@ -132,7 +133,7 @@ else:
     st.success("No automated threshold alerts for the current filter.")
 c1, c2 = st.columns(2)
 with c1:
-    st.plotly_chart(px.line(by_year.reset_index(), x="order_year", y="revenue", markers=True, title="Command center · revenue"), width="stretch")
+    show_chart(px.line(by_year.reset_index(), x="order_year", y="revenue", markers=True, title="Command center · revenue"))
 with c2:
     mix = tx.groupby("subcategory", as_index=False)["final_amount_inr"].sum()
-    st.plotly_chart(px.pie(mix, names="subcategory", values="final_amount_inr", title="Command center · mix", hole=0.45), width="stretch")
+    show_chart(px.pie(mix, names="subcategory", values="final_amount_inr", title="Command center · mix", hole=0.45))
