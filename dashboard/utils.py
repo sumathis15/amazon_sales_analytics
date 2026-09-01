@@ -19,61 +19,58 @@ DEVELOPER_NAME = "Sumathi S"
 
 
 def render_developer_credit() -> None:
-    """Credit box pinned to the top-left corner of the sidebar pane."""
+    """Compact credit line in the sidebar, under the page list and above filters."""
     st.markdown(
-        f"""
+        """
 <style>
-/* Sit in the top-left of the left pane, above page links and filters. */
-.developer-credit {{
-    position: fixed;
-    top: 0.7rem;
-    left: 0.7rem;
-    width: 16.6rem;
-    z-index: 1000002;
+[data-testid="stSidebarNavSeparator"] { display: none; }
+[data-testid="stSidebarNav"] { padding-bottom: 0.15rem !important; }
+.developer-credit {
     margin: 0;
-    background: #15202b;
-    border-radius: 12px;
-    padding: 12px 14px 10px 14px;
-    box-shadow: 0 0 0 1px rgba(255,255,255,0.06);
-}}
-.developer-credit .credit-label {{
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    color: #9bb0c9;
+    padding: 0.15rem 0 0.7rem 0;
+    border-bottom: 1px solid rgba(49, 51, 63, 0.12);
+    background: transparent;
+}
+.developer-credit .credit-label {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: #6b7280;
     font-weight: 650;
-    margin-bottom: 8px;
-}}
-.developer-credit a {{
+    margin-bottom: 6px;
+}
+.developer-credit a {
     display: flex;
     align-items: center;
-    gap: 10px;
-    color: #ffffff !important;
+    gap: 8px;
+    color: #232F3E !important;
     text-decoration: none !important;
     font-weight: 600;
-    font-size: 0.98rem;
-}}
-.developer-credit a:hover {{ opacity: 0.88; }}
-.developer-credit .li-badge {{
-    width: 22px;
-    height: 22px;
-    border-radius: 4px;
+    font-size: 0.92rem;
+}
+.developer-credit a:hover { color: #0A66C2 !important; }
+.developer-credit .li-badge {
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
     background: #0A66C2;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    font-size: 11px;
+    font-size: 9px;
     font-weight: 800;
-    letter-spacing: -0.04em;
     color: #fff;
-}}
-[data-testid="stSidebarNav"] {{
-    padding-top: 5.6rem !important;
-}}
-section[data-testid="stSidebar"] > div:first-child {{
-    padding-top: 0.25rem;
-}}
+}
+div[data-testid="stSidebarContent"] div[data-testid="stMarkdownContainer"]:has(.developer-credit) {
+    padding-top: 0 !important;
+    margin-bottom: 0.2rem !important;
+}
 </style>
+        """,
+        unsafe_allow_html=True,
+    )
+    st.sidebar.markdown(
+        f"""
 <div class="developer-credit">
   <div class="credit-label">DEVELOPED BY</div>
   <a href="{LINKEDIN_URL}" target="_blank" rel="noopener noreferrer">

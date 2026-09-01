@@ -1,9 +1,9 @@
-pandas>=2.2,<3
-numpy>=1.26,<3
+pandas>=2.2
+numpy>=1.26
 matplotlib>=3.8
 seaborn>=0.13
 sqlalchemy>=2.0
 streamlit>=1.40
 plotly>=5.22
 scikit-learn>=1.4
-pyarrow>=14.0.0,<15
+pyarrow>=17.0.0,<25

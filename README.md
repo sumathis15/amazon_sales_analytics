@@ -43,8 +43,8 @@ The optional SQLite warehouse (`data/amazon_india_analytics.db`) is rebuilt by t
 2. **Create app** → repository `sumathis15/amazon_sales_analytics`.
 3. **Main file path (exact, lowercase):** `dashboard/Home.py`  
    Linux hosting is case-sensitive. `Dashboard/Home.py` will fail.
-4. Python version: **3.12**.
-5. Deploy, then **Reboot** the app after the first failed build if you change `requirements.txt`.
+4. Community Cloud ignores `runtime.txt`. Set Python in **Advanced settings** if the dropdown is offered (3.12 is preferred). The current Cloud image often uses **3.14**; `requirements.txt` is written so that install still works there.
+5. After a failed requirements install, click **Reboot** so Cloud rebuilds the environment. Changing `requirements.txt` alone is not enough if the last install already failed.
 
 First load reads ~1.1M rows from parquet and can take a minute. No secrets are required.
 
