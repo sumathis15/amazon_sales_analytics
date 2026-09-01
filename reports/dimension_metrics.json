@@ -1,0 +1,19 @@
+{
+  "customers": 354969,
+  "rfm_segments": {
+    "Loyal Customers": 65426,
+    "Lost": 61114,
+    "At Risk": 43945,
+    "Champions": 41020,
+    "Cannot Lose Them": 37406,
+    "Hibernating": 30270,
+    "About to Sleep": 25282,
+    "Promising": 20499,
+    "New Customers": 12577,
+    "Need Attention": 10701,
+    "Potential Loyalists": 6729
+  },
+  "time_rows": 4018,
+  "products": 2004,
+  "snapshot_date": "2026-01-01"
+}

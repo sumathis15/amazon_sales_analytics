@@ -1,0 +1,28 @@
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# Local walkthrough only — not part of the hosted repo
+Guide.md
+
+# Raw year files and the SQLite warehouse are too large for GitHub
+amazon_india_20*.csv
+amazon_india_products_catalog.csv
+data/amazon_india_analytics.db
+data/cleaned/*.csv
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.cursor/

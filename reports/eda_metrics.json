@@ -1,0 +1,793 @@
+{
+  "q1": {
+    "yearly": [
+      {
+        "order_year": 2015,
+        "revenue": 2130499205.39,
+        "orders": 33000,
+        "growth_pct": NaN
+      },
+      {
+        "order_year": 2016,
+        "revenue": 3579914356.18,
+        "orders": 54999,
+        "growth_pct": 68.03171515497823
+      },
+      {
+        "order_year": 2017,
+        "revenue": 5479954036.37,
+        "orders": 77000,
+        "growth_pct": 53.075003789125994
+      },
+      {
+        "order_year": 2018,
+        "revenue": 7213275820.43,
+        "orders": 99000,
+        "growth_pct": 31.63022486240008
+      },
+      {
+        "order_year": 2019,
+        "revenue": 8563454684.26,
+        "orders": 121000,
+        "growth_pct": 18.717970828259723
+      },
+      {
+        "order_year": 2020,
+        "revenue": 11813639060.36,
+        "orders": 143000,
+        "growth_pct": 37.95412594491776
+      },
+      {
+        "order_year": 2021,
+        "revenue": 10934111732.01,
+        "orders": 137500,
+        "growth_pct": -7.44501608569712
+      },
+      {
+        "order_year": 2022,
+        "revenue": 8489730079.28,
+        "orders": 132000,
+        "growth_pct": -22.35555765882643
+      },
+      {
+        "order_year": 2023,
+        "revenue": 7673823148.42,
+        "orders": 126500,
+        "growth_pct": -9.610516744829134
+      },
+      {
+        "order_year": 2024,
+        "revenue": 6788208373.62,
+        "orders": 121000,
+        "growth_pct": -11.540724325688211
+      },
+      {
+        "order_year": 2025,
+        "revenue": 3831697167.4,
+        "orders": 77000,
+        "growth_pct": -43.55363070039876
+      }
+    ],
+    "total_revenue_inr": 76498307663.71999,
+    "cagr": 0.060451913616432984,
+    "peak_growth_year": 2016,
+    "peak_growth_pct": 68.03171515497823
+  },
+  "q2": {
+    "peak_month": 12,
+    "peak_month_revenue_inr": 10014230746.96,
+    "monthly_share": {
+      "1": 0.08167715793434797,
+      "2": 0.07323380968788311,
+      "3": 0.0672351099152392,
+      "4": 0.08235728930651785,
+      "5": 0.07529965568652536,
+      "6": 0.0658534897737243,
+      "7": 0.073421663790397,
+      "8": 0.08215226255482883,
+      "9": 0.08023417549811883,
+      "10": 0.08749649440839033,
+      "11": 0.10013101841000273,
+      "12": 0.13090787303402446
+    }
+  },
+  "q3": {
+    "segment_counts": {
+      "Loyal Customers": 65426,
+      "Lost": 61114,
+      "At Risk": 43945,
+      "Champions": 41020,
+      "Cannot Lose Them": 37406,
+      "Hibernating": 30270,
+      "About to Sleep": 25282,
+      "Promising": 20499,
+      "New Customers": 12577,
+      "Need Attention": 10701,
+      "Potential Loyalists": 6729
+    },
+    "segment_revenue": {
+      "About to Sleep": 1689391732.01,
+      "At Risk": 9927729863.78,
+      "Cannot Lose Them": 17963829752.52,
+      "Champions": 17900812186.3,
+      "Hibernating": 2310272900.54,
+      "Lost": 4188275665.58,
+      "Loyal Customers": 18344715250.15,
+      "Need Attention": 1638944623.32,
+      "New Customers": 495587131.63,
+      "Potential Loyalists": 1222926442.15,
+      "Promising": 815822115.74
+    }
+  },
+  "q4": {
+    "share_2015": {
+      "BNPL": 0.0,
+      "COD": 75.25757575757575,
+      "Credit Card": 12.087878787878788,
+      "Debit Card": 7.842424242424243,
+      "Net Banking": 4.8121212121212125,
+      "UPI": 0.0,
+      "Wallet": 0.0
+    },
+    "share_2025": {
+      "BNPL": 6.802597402597403,
+      "COD": 8.06103896103896,
+      "Credit Card": 11.983116883116883,
+      "Debit Card": 8.048051948051949,
+      "Net Banking": 2.948051948051948,
+      "UPI": 60.15974025974026,
+      "Wallet": 1.9974025974025973
+    },
+    "upi_2015": 0.0,
+    "upi_2025": 60.15974025974026,
+    "cod_2015": 75.25757575757575,
+    "cod_2025": 8.06103896103896
+  },
+  "q5": {
+    "revenue_by_subcategory": {
+      "Audio": 1105539609.44,
+      "Laptops": 9352303108.55,
+      "Smart Watch": 3197882408.04,
+      "Smartphones": 55870649450.74,
+      "TV & Entertainment": 1912713371.89,
+      "Tablets": 5059219715.06
+    },
+    "share": {
+      "Audio": 0.014451817866348856,
+      "Laptops": 0.1222550327474161,
+      "Smart Watch": 0.041803309193421866,
+      "Smartphones": 0.7303514438037321,
+      "TV & Entertainment": 0.025003342300043085,
+      "Tablets": 0.06613505408903812
+    },
+    "cagr_pct": {
+      "Audio": 17.28946902077151,
+      "Laptops": 2.7477409020355337,
+      "Smart Watch": 4.100805337627933,
+      "Smartphones": 7.202469048437643,
+      "TV & Entertainment": 2.909133046739165,
+      "Tablets": 1.6836565470012443
+    }
+  },
+  "q6": {
+    "aov_prime": 77019.8163527614,
+    "aov_nonprime": 59427.84816597274,
+    "orders_per_cust_prime": 2.657778441697477,
+    "orders_per_cust_nonprime": 3.5767882783430345,
+    "revenue_share_prime": 0.43650662643451466
+  },
+  "q7": {
+    "top_cities": [
+      {
+        "customer_city": "Mumbai",
+        "revenue": 10599286715.71,
+        "customer_tier": "Metro"
+      },
+      {
+        "customer_city": "Delhi",
+        "revenue": 9234673803.6,
+        "customer_tier": "Metro"
+      },
+      {
+        "customer_city": "Bangalore",
+        "revenue": 7638850400.95,
+        "customer_tier": "Metro"
+      },
+      {
+        "customer_city": "Chennai",
+        "revenue": 6386139821.41,
+        "customer_tier": "Metro"
+      },
+      {
+        "customer_city": "Kolkata",
+        "revenue": 5029070079.39,
+        "customer_tier": "Metro"
+      },
+      {
+        "customer_city": "Pune",
+        "revenue": 4423057183.05,
+        "customer_tier": "Tier1"
+      },
+      {
+        "customer_city": "Hyderabad",
+        "revenue": 3319918426.22,
+        "customer_tier": "Metro"
+      },
+      {
+        "customer_city": "Ahmedabad",
+        "revenue": 3283260213.49,
+        "customer_tier": "Tier1"
+      },
+      {
+        "customer_city": "Surat",
+        "revenue": 2652199573.3,
+        "customer_tier": "Tier1"
+      },
+      {
+        "customer_city": "Jaipur",
+        "revenue": 2631612042.19,
+        "customer_tier": "Tier1"
+      }
+    ],
+    "tier_revenue": {
+      "Metro": 42207939247.28,
+      "Tier1": 22076617621.04,
+      "Tier2": 9901669735.11,
+      "Rural": 2312081060.29
+    },
+    "top_states": {
+      "Maharashtra": 17458862217.0,
+      "Delhi": 9234673803.6,
+      "Tamil Nadu": 7884307260.43,
+      "Karnataka": 7638850400.95,
+      "Gujarat": 7145689002.15,
+      "Uttar Pradesh": 6758639909.87,
+      "West Bengal": 5029070079.39,
+      "Telangana": 3319918426.22
+    }
+  },
+  "q8": {
+    "festival_revenue": {
+      "Back to School": 4053048785.12,
+      "Diwali Sale": 3939517718.25,
+      "Amazon Great Indian Festival": 2506032855.18,
+      "Summer Sale": 2108719079.56,
+      "Holi Festival": 1875884399.71,
+      "Republic Day Sale": 955429205.23,
+      "Valentine Sale": 662400508.66,
+      "Prime Day": 433255943.52
+    },
+    "festival_order_share": 0.3103211321935225,
+    "diwali_before_during_after": [
+      {
+        "year": 2015,
+        "before_daily": 8066487.907142856,
+        "during_daily": 5651476.850909091,
+        "after_daily": 8300758.948571429
+      },
+      {
+        "year": 2016,
+        "before_daily": 13759687.697857141,
+        "during_daily": 8932655.941363635,
+        "after_daily": 13371244.462142855
+      },
+      {
+        "year": 2017,
+        "before_daily": 20639109.887857143,
+        "during_daily": 14188889.77590909,
+        "after_daily": 20600934.957142856
+      },
+      {
+        "year": 2018,
+        "before_daily": 27096930.954285715,
+        "during_daily": 18967703.67090909,
+        "after_daily": 26784873.830714285
+      },
+      {
+        "year": 2019,
+        "before_daily": 32386305.91857143,
+        "during_daily": 21868127.615454543,
+        "after_daily": 32600588.929285713
+      },
+      {
+        "year": 2020,
+        "before_daily": 36488778.54357143,
+        "during_daily": 26241042.786363635,
+        "after_daily": 41071731.22928572
+      },
+      {
+        "year": 2021,
+        "before_daily": 34779307.18,
+        "during_daily": 23951471.519545455,
+        "after_daily": 37854141.852142856
+      },
+      {
+        "year": 2022,
+        "before_daily": 26626754.527857143,
+        "during_daily": 18962610.777272727,
+        "after_daily": 29053841.764999993
+      },
+      {
+        "year": 2023,
+        "before_daily": 24116728.020714287,
+        "during_daily": 16909159.738636363,
+        "after_daily": 26047275.98642857
+      },
+      {
+        "year": 2024,
+        "before_daily": 20823408.00357143,
+        "during_daily": 14934742.746818183,
+        "after_daily": 23315866.379999995
+      },
+      {
+        "year": 2025,
+        "before_daily": 11919728.459999999,
+        "during_daily": 8461105.77,
+        "after_daily": 13240444.0
+      }
+    ]
+  },
+  "q9": {
+    "revenue": {
+      "18-25": 24127543073.85,
+      "26-35": 26551716436.36,
+      "36-45": 15122721853.67,
+      "46-55": 7505608175.45,
+      "55+": 2266982123.74,
+      "Unknown": 923736000.65
+    },
+    "aov": {
+      "18-25": 68257.35920337558,
+      "26-35": 68329.2366827335,
+      "36-45": 68070.3891002102,
+      "46-55": 67997.28373044274,
+      "55+": 67756.05606252614,
+      "Unknown": 66298.42823871384
+    },
+    "orders_per_customer": {
+      "18-25": 3.2433431816930614,
+      "26-35": 3.225173258081919,
+      "36-45": 3.2408898614150257,
+      "46-55": 3.238023996010443,
+      "55+": 3.212173579109063,
+      "Unknown": 1.119746041951298
+    }
+  },
+  "q10": {
+    "correlation": {
+      "price": {
+        "price": 1.0,
+        "units": -0.13444633420686872,
+        "revenue": 0.33408916681449424,
+        "discount": -0.05086162602286153
+      },
+      "units": {
+        "price": -0.13444633420686872,
+        "units": 1.0,
+        "revenue": 0.7339568200371213,
+        "discount": 0.02069437726330074
+      },
+      "revenue": {
+        "price": 0.33408916681449424,
+        "units": 0.7339568200371213,
+        "revenue": 1.0,
+        "discount": 0.007306852570775664
+      },
+      "discount": {
+        "price": -0.05086162602286153,
+        "units": 0.02069437726330074,
+        "revenue": 0.007306852570775664,
+        "discount": 1.0
+      }
+    }
+  },
+  "q11": {
+    "avg_delivery_days": 3.314532365893374,
+    "median_delivery_days": 3.0,
+    "on_time_vs_sla": 0.9995980388574321,
+    "rating_by_days": {
+      "1": 4.355419252704162,
+      "2": 4.354310819417308,
+      "3": 4.3055316626089155,
+      "4": 4.281311500668847,
+      "5": 4.281692737135935,
+      "6": 4.281804536591524,
+      "7": 4.279969522519472
+    },
+    "avg_days_by_tier": {
+      "Metro": 3.3506621294739865,
+      "Rural": 3.444120661588858,
+      "Tier1": 3.2283185525519107,
+      "Tier2": 3.327902801122055
+    }
+  },
+  "q12": {
+    "return_rate": 0.07015425147437743,
+    "cancel_rate": 0.023106081199715866,
+    "return_by_subcategory": {
+      "TV & Entertainment": 0.05832824893227578,
+      "Laptops": 0.0689298187733928,
+      "Smartphones": 0.06960249017706792,
+      "Tablets": 0.07001587369685529,
+      "Smart Watch": 0.07368095353404902,
+      "Audio": 0.08014213963829829
+    },
+    "return_by_price_quintile": {
+      "Q1 cheap": 0.08113154575960001,
+      "Q2": 0.07386396552569308,
+      "Q3": 0.07128857529755542,
+      "Q4": 0.06522872845432785,
+      "Q5 expensive": 0.059254570901343416
+    }
+  },
+  "q13": {
+    "top_brands": {
+      "Samsung": 20520951524.99,
+      "Apple": 16239589892.23,
+      "OnePlus": 12259210879.6,
+      "Xiaomi": 5422383040.79,
+      "Realme": 3000819931.27,
+      "Vivo": 2336064909.72,
+      "Oppo": 2258377823.02,
+      "Lenovo": 2074881483.02,
+      "Alienware": 1651697844.11,
+      "ASUS": 1451541724.76,
+      "Acer": 1410314824.83,
+      "MSI": 1076809982.97
+    },
+    "share_2015": {
+      "Samsung": 31.062879345165246,
+      "Apple": 19.820012240873,
+      "OnePlus": 14.912419390076307,
+      "Xiaomi": 8.611426291352005,
+      "Realme": 0.06471510228738203,
+      "Vivo": 0.0,
+      "Oppo": 0.0,
+      "Lenovo": 1.9636340175185292
+    },
+    "share_2025": {
+      "Samsung": 26.70334350729201,
+      "Apple": 21.717501647048344,
+      "OnePlus": 15.868126086346516,
+      "Xiaomi": 6.743876723831511,
+      "Realme": 4.968462904368302,
+      "Vivo": 2.0385152734552188,
+      "Oppo": 2.096602602196552,
+      "Lenovo": 2.444417758451273
+    }
+  },
+  "q14": {
+    "median_clv": 797808.05,
+    "mean_clv": 1476215.3064488312,
+    "retention_year1": {
+      "2015": 0.8243628586704688,
+      "2016": 0.5176242509693338,
+      "2017": 0.3581016498358476,
+      "2018": 0.27319274216774936,
+      "2019": 0.22809446679554835,
+      "2020": 0.16863231031354414,
+      "2021": 0.14015473266144768,
+      "2022": 0.12880942706216986,
+      "2023": 0.12456030934264688,
+      "2024": 0.08374744991368939
+    },
+    "clv_by_segment": {
+      "About to Sleep": 1125118.08,
+      "At Risk": 884359.5957692309,
+      "Cannot Lose Them": 669557.5993397641,
+      "Champions": 585567.8485627036,
+      "Hibernating": 1375089.1622753907,
+      "Lost": 685953.2555477831,
+      "Loyal Customers": 647074.8301991012,
+      "Need Attention": 662854.3906132075,
+      "New Customers": 1150214.4000000001,
+      "Potential Loyalists": 4417947.359999999,
+      "Promising": 964743.8399999999
+    },
+    "clv_by_acq_year": {
+      "2015": 541044.9194957386,
+      "2016": 511375.21745565406,
+      "2017": 568282.2296226415,
+      "2018": 660576.2658176944,
+      "2019": 750694.4052201571,
+      "2020": 932465.1600000001,
+      "2021": 931974.8399999999,
+      "2022": 829976.2967964071,
+      "2023": 927155.0333793105,
+      "2024": 969664.6993456248,
+      "2025": 918656.3889705881
+    }
+  },
+  "q15": {
+    "orders_by_band": {
+      "0%": 503280,
+      "0-10": 53771,
+      "10-20": 139743,
+      "20-30": 172079,
+      "30-50": 126337,
+      "50+": 126789
+    },
+    "revenue_by_band": {
+      "0%": 41566388476.66,
+      "0-10": 4113178753.4,
+      "10-20": 9724036907.26,
+      "20-30": 10660766475.18,
+      "30-50": 6248136000.79,
+      "50+": 4185801050.43
+    },
+    "correlation": {
+      "discount_percent": {
+        "discount_percent": 1.0,
+        "quantity": -0.0006881234270362233,
+        "final_amount_inr": -0.24666218675561102,
+        "original_price_inr": -0.0009593897172442961
+      },
+      "quantity": {
+        "discount_percent": -0.0006881234270362233,
+        "quantity": 1.0,
+        "final_amount_inr": 0.4250748623963852,
+        "original_price_inr": 0.0002855844903859977
+      },
+      "final_amount_inr": {
+        "discount_percent": -0.24666218675561102,
+        "quantity": 0.4250748623963852,
+        "final_amount_inr": 1.0,
+        "original_price_inr": 0.7709809290036169
+      },
+      "original_price_inr": {
+        "discount_percent": -0.0009593897172442961,
+        "quantity": 0.0002855844903859977,
+        "final_amount_inr": 0.7709809290036169,
+        "original_price_inr": 1.0
+      }
+    },
+    "avg_discount": 17.42266079559786
+  },
+  "q16": {
+    "rating_vs_units_corr": 0.1300168797372621,
+    "rating_vs_revenue_corr": 0.12660274813609462,
+    "mean_product_rating": 3.9752304592071828,
+    "mean_customer_rating": 4.310689779519142
+  },
+  "q17": {
+    "one_time_customer_share": 0.2586648411551431,
+    "loyal_5plus_share": 0.21083531237939088,
+    "mean_orders_per_customer": 3.1608365800957268,
+    "top_transitions": [
+      [
+        "Smartphones\u2192Smartphones",
+        411445
+      ],
+      [
+        "Laptops\u2192Smartphones",
+        44493
+      ],
+      [
+        "Smartphones\u2192Laptops",
+        43361
+      ],
+      [
+        "Smart Watch\u2192Smartphones",
+        37537
+      ],
+      [
+        "Smartphones\u2192Smart Watch",
+        37013
+      ],
+      [
+        "Tablets\u2192Smartphones",
+        36101
+      ],
+      [
+        "Smartphones\u2192Tablets",
+        33935
+      ],
+      [
+        "Smartphones\u2192Audio",
+        25128
+      ]
+    ]
+  },
+  "q18": {
+    "revenue_by_product_age": {
+      "0": 68727.83407262176,
+      "1": 69457.22966579747,
+      "2": 69777.13718845259,
+      "3": 69438.47391398139,
+      "4": 68408.54293578381,
+      "5": 69274.94819226058,
+      "6": 65524.33423611765,
+      "7": 60097.10757465487,
+      "8": 60576.27961221093,
+      "9": 58611.8739027671,
+      "10": 54461.93238272022
+    },
+    "subcategory_share_2015": {
+      "Audio": 0.00830898169087066,
+      "Laptops": 0.1512420313346306,
+      "Smart Watch": 0.06562077985117479,
+      "Smartphones": 0.6575568819344163,
+      "TV & Entertainment": 0.029017542918389944,
+      "Tablets": 0.08825378227051768
+    },
+    "subcategory_share_2025": {
+      "Audio": 0.022762932084526823,
+      "Laptops": 0.11027714634262721,
+      "Smart Watch": 0.05453464354329183,
+      "Smartphones": 0.7329450326956962,
+      "TV & Entertainment": 0.02149265311221891,
+      "Tablets": 0.057987592221638885
+    }
+  },
+  "q19": {
+    "median_price": {
+      "Apple": 110468.495,
+      "Lenovo": 63814.46,
+      "OnePlus": 53113.67,
+      "Oppo": 25031.004999999997,
+      "Realme": 24459.05,
+      "Samsung": 69564.605,
+      "Vivo": 25367.39,
+      "Xiaomi": 25862.59
+    },
+    "units": {
+      "Apple": 139203,
+      "Lenovo": 28217,
+      "OnePlus": 216965,
+      "Oppo": 88486,
+      "Realme": 105397,
+      "Samsung": 277055,
+      "Vivo": 88265,
+      "Xiaomi": 194595
+    },
+    "rating": {
+      "Apple": 3.9857859351405764,
+      "Lenovo": 3.982581215469613,
+      "OnePlus": 4.024237078036266,
+      "Oppo": 3.970622090562844,
+      "Realme": 3.9645255838238085,
+      "Samsung": 3.9719253991317927,
+      "Vivo": 3.9767096974661733,
+      "Xiaomi": 3.9730169151154713
+    }
+  },
+  "q20": {
+    "yearly": [
+      {
+        "order_year": 2015,
+        "revenue": 2130499205.39,
+        "orders": 33000,
+        "customers": 11222,
+        "aov": 64560.581981515155,
+        "prime_share": 0.0,
+        "return_rate": 0.0706969696969697,
+        "avg_delivery": 4.305393939393939,
+        "new_customers": 11222,
+        "yoy": NaN
+      },
+      {
+        "order_year": 2016,
+        "revenue": 3579914356.18,
+        "orders": 54999,
+        "customers": 26273,
+        "aov": 65090.535394825354,
+        "prime_share": 0.01629120529464172,
+        "return_rate": 0.06840124365897562,
+        "avg_delivery": 4.265332096947217,
+        "new_customers": 17022,
+        "yoy": 0.6803171515497823
+      },
+      {
+        "order_year": 2017,
+        "revenue": 5479954036.37,
+        "orders": 77000,
+        "customers": 38789,
+        "aov": 71168.23423857143,
+        "prime_share": 0.07832467532467532,
+        "return_rate": 0.07023376623376623,
+        "avg_delivery": 4.107259740259741,
+        "new_customers": 24063,
+        "yoy": 0.53075003789126
+      },
+      {
+        "order_year": 2018,
+        "revenue": 7213275820.43,
+        "orders": 99000,
+        "customers": 49917,
+        "aov": 72861.37192353536,
+        "prime_share": 0.16004040404040404,
+        "return_rate": 0.06973737373737374,
+        "avg_delivery": 3.8924747474747474,
+        "new_customers": 31249,
+        "yoy": 0.3163022486240008
+      },
+      {
+        "order_year": 2019,
+        "revenue": 8563454684.26,
+        "orders": 121000,
+        "customers": 61068,
+        "aov": 70772.35276247934,
+        "prime_share": 0.24141322314049588,
+        "return_rate": 0.06889256198347107,
+        "avg_delivery": 3.6761487603305785,
+        "new_customers": 38278,
+        "yoy": 0.18717970828259722
+      },
+      {
+        "order_year": 2020,
+        "revenue": 11813639060.36,
+        "orders": 143000,
+        "customers": 71997,
+        "aov": 82612.86056195805,
+        "prime_share": 0.36874125874125874,
+        "return_rate": 0.06929370629370629,
+        "avg_delivery": 3.3464195804195804,
+        "new_customers": 45193,
+        "yoy": 0.3795412594491776
+      },
+      {
+        "order_year": 2021,
+        "revenue": 10934111732.01,
+        "orders": 137500,
+        "customers": 69375,
+        "aov": 79520.81259643637,
+        "prime_share": 0.4461818181818182,
+        "return_rate": 0.07024727272727273,
+        "avg_delivery": 3.140770909090909,
+        "new_customers": 43559,
+        "yoy": -0.0744501608569712
+      },
+      {
+        "order_year": 2022,
+        "revenue": 8489730079.28,
+        "orders": 132000,
+        "customers": 66605,
+        "aov": 64316.136964242425,
+        "prime_share": 0.5106439393939394,
+        "return_rate": 0.07093939393939394,
+        "avg_delivery": 2.9725075757575756,
+        "new_customers": 41837,
+        "yoy": -0.2235555765882643
+      },
+      {
+        "order_year": 2023,
+        "revenue": 7673823148.42,
+        "orders": 126500,
+        "customers": 63790,
+        "aov": 60662.63358434783,
+        "prime_share": 0.5614150197628458,
+        "return_rate": 0.07201581027667985,
+        "avg_delivery": 2.845185770750988,
+        "new_customers": 40085,
+        "yoy": -0.09610516744829134
+      },
+      {
+        "order_year": 2024,
+        "revenue": 6788208373.62,
+        "orders": 121000,
+        "customers": 60947,
+        "aov": 56100.89564975206,
+        "prime_share": 0.6030909090909091,
+        "return_rate": 0.07005785123966943,
+        "avg_delivery": 2.7344297520661156,
+        "new_customers": 38234,
+        "yoy": -0.11540724325688212
+      },
+      {
+        "order_year": 2025,
+        "revenue": 3831697167.4,
+        "orders": 77000,
+        "customers": 38826,
+        "aov": 49762.300875324676,
+        "prime_share": 0.6434285714285715,
+        "return_rate": 0.0707922077922078,
+        "avg_delivery": 2.6267532467532466,
+        "new_customers": 24227,
+        "yoy": -0.4355363070039876
+      }
+    ],
+    "linear_slope_inr_per_year": 298584898.0128183,
+    "active_customers_2025": 38826,
+    "return_rate_latest": 0.0707922077922078
+  }
+}

@@ -1,0 +1,205 @@
+{
+  "rows_before": 1127609,
+  "columns_before": [
+    "transaction_id",
+    "order_date",
+    "customer_id",
+    "product_id",
+    "product_name",
+    "category",
+    "subcategory",
+    "brand",
+    "original_price_inr",
+    "discount_percent",
+    "discounted_price_inr",
+    "quantity",
+    "subtotal_inr",
+    "delivery_charges",
+    "final_amount_inr",
+    "customer_city",
+    "customer_state",
+    "customer_tier",
+    "customer_spending_tier",
+    "customer_age_group",
+    "payment_method",
+    "delivery_days",
+    "delivery_type",
+    "is_prime_member",
+    "is_festival_sale",
+    "festival_name",
+    "customer_rating",
+    "return_status",
+    "order_month",
+    "order_year",
+    "order_quarter",
+    "product_weight_kg",
+    "is_prime_eligible",
+    "product_rating",
+    "source_file"
+  ],
+  "q1_date": {
+    "iso_yyyy_mm_dd": 1019353,
+    "slash_mixed": 67893,
+    "dash_dd_mm_yyyy": 40363,
+    "dash_dd_mm_yy": 0,
+    "invalid_or_unparseable": 0,
+    "standardized_valid": 1127609,
+    "rule": "ISO dates kept as-is. Dash dates parsed as DD-MM-YYYY. Slash dates disambiguated using order_month (DMY vs MDY mix). Unparseable/invalid calendar dates set to NaT and later dropped."
+  },
+  "q2_price": {
+    "currency_symbol_rows": 78908,
+    "comma_separator_rows": 101569,
+    "unparsed_including_price_on_request": 0,
+    "negative_sign_errors": 2792,
+    "rule": "Stripped \u20b9 / Rs / INR and thousands separators; abs() for sign errors; non-numeric/Price on Request imputed from discounted_price / (1 - discount%)."
+  },
+  "q9_outliers": {
+    "corrected_100x_decimal_shift": 2625,
+    "corrected_10x_decimal_shift": 2744,
+    "rebuilt_from_discount_identity": 0,
+    "rule": "Compared parsed original_price to expected = discounted_price / (1 - discount%). Ratios ~100 were decimal-point (paise) errors and divided by 100; ratios ~10 divided by 10. Remaining mismatches used the discount identity."
+  },
+  "q3_rating": {
+    "missing_before": 341696,
+    "missing_after_parse": 341696,
+    "non_plain_numeric_formats": 56544,
+    "imputed_companion_filled": 341696,
+    "rule": "Parsed '4.5', '4 stars', '3/5', '2.5/5.0' onto 1\u20135. Missing ratings left as NaN for analysis (30%+ are true non-response). customer_rating_imputed uses product-level median, then product_rating."
+  },
+  "q4_city": {
+    "unique_before": 50,
+    "unique_after": 30,
+    "rows_standardised": 4652,
+    "rule": "Trimmed whitespace, folded case, mapped Bombay\u2192Mumbai, New Delhi/Delhi NCR\u2192Delhi, Bengaluru/Banglore/Bengalore\u2192Bangalore, Calcutta\u2192Kolkata, Madras/chenai\u2192Chennai, plus typo 'mumba'."
+  },
+  "q5_booleans": {
+    "columns": {
+      "is_prime_member": {
+        "raw_value_counts": {
+          "False": 635593,
+          "True": 390675,
+          "FALSE": 21086,
+          "0": 21078,
+          "No": 20728,
+          "Yes": 12894,
+          "1": 12871,
+          "TRUE": 12684
+        },
+        "true_after": 429124,
+        "false_after": 698485
+      },
+      "is_prime_eligible": {
+        "raw_value_counts": {
+          "True": 840778,
+          "False": 185642,
+          "1": 27650,
+          "Yes": 27631,
+          "TRUE": 27607,
+          "FALSE": 6183,
+          "No": 6079,
+          "0": 6039
+        },
+        "true_after": 923666,
+        "false_after": 203943
+      },
+      "is_festival_sale": {
+        "raw_value_counts": {
+          "False": 707951,
+          "True": 318446,
+          "0": 23568,
+          "FALSE": 23150,
+          "No": 23067,
+          "Yes": 10518,
+          "TRUE": 10488,
+          "1": 10421
+        },
+        "true_after": 349873,
+        "false_after": 777736
+      }
+    },
+    "rule": "Mapped True/TRUE/Yes/1/Y and False/FALSE/No/0/N onto boolean. Residual missing \u2192 False."
+  },
+  "q6_category": {
+    "raw_value_counts": {
+      "Electronics": 1126726,
+      "Electronic": 229,
+      "ELECTRONICS": 225,
+      "Electronics & Accessories": 218,
+      "Electronicss": 211
+    },
+    "unique_after": 1,
+    "after_value_counts": {
+      "Electronics": 1127609
+    },
+    "rule": "Mapped Electronic / ELECTRONICS / Electronics & Accessories / Electronicss \u2192 Electronics."
+  },
+  "q7_delivery": {
+    "raw_value_counts": {
+      "3": 288488,
+      "1": 210462,
+      "4": 206438,
+      "5": 136608,
+      "2": 126280,
+      "6": 102668,
+      "7": 34116,
+      "-1": 6836,
+      "1-2 days": 4534,
+      "Same Day": 4469,
+      "Express": 2317,
+      "0": 2218,
+      "15": 2175
+    },
+    "after_min": 1,
+    "after_max": 7,
+    "rule": "Same Day text \u2192 1; Express text \u2192 2; '1-2 days' \u2192 1/2 by delivery_type; negative and 15-day outliers imputed from delivery_type (Same Day=1, Express=2, Standard=3). Zero mapped to 1 for Same Day else type default."
+  },
+  "q8_duplicates": {
+    "exact_row_duplicates_before": 0,
+    "transaction_id_duplicates_before": 0,
+    "key_duplicate_rows_before": 5610,
+    "txn_id_dup_suffix_removed": 5609,
+    "key_duplicates_remaining_after_suffix_drop": 1,
+    "rows_after": 1121999,
+    "rule": "Pairs sharing customer, product, date and amount always included a transaction_id ending in _DUP. Those 5,610 rows are error clones (same quantity, not bulk orders) and were dropped. Unique _DUP-free transaction_ids were kept."
+  },
+  "q10_payment": {
+    "raw_value_counts": {
+      "UPI": 382356,
+      "COD": 321261,
+      "Credit Card": 171396,
+      "Debit Card": 139490,
+      "Net Banking": 64620,
+      "Wallet": 22678,
+      "BNPL": 20198
+    },
+    "after_value_counts": {
+      "UPI": 382356,
+      "COD": 321261,
+      "Credit Card": 171396,
+      "Debit Card": 139490,
+      "Net Banking": 64620,
+      "Wallet": 22678,
+      "BNPL": 20198
+    },
+    "hierarchy_counts": {
+      "Digital Payments": 405034,
+      "Cash on Delivery": 321261,
+      "Card Payments": 310886,
+      "Bank Transfer": 64620,
+      "Buy Now Pay Later": 20198
+    },
+    "rule": "Canonical names: UPI, Credit Card, Debit Card, COD, Net Banking, Wallet, BNPL. Aliases PhonePe/GooglePay\u2192UPI, CREDIT_CARD/CC\u2192Credit Card, C.O.D\u2192COD. Hierarchy groups: Digital Payments, Card Payments, Bank Transfer, Buy Now Pay Later, Cash on Delivery."
+  },
+  "other_missing": {
+    "delivery_charges_missing_filled_with_zero": 89760,
+    "age_missing_before": 134640,
+    "age_recovered_from_same_customer": 120707,
+    "age_left_as_unknown": 13933,
+    "rule": "delivery_charges is 0 on ~all non-null rows (only 8 rows = 40 INR), so missing \u2192 0. Age is constant per customer_id; missing ages were back-filled from the same customer's other orders. Remaining customers with no age anywhere \u2192 'Unknown' (spending-tier age mix is uniform, so imputing 26-35 would only add bias)."
+  },
+  "rows_after": 1121999,
+  "catalog_rows": 2004,
+  "date_min": "2015-01-01",
+  "date_max": "2025-12-31",
+  "revenue_inr": 76498307663.72
+}
